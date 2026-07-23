@@ -20,7 +20,7 @@ A React + Vite task manager app with:
 
 ## Screenshot
 
-![Task Manager main features](./screenshot.jpg)
+![Task Manager main features](./screen shot.jpg)
 
 ## Bonus challenges completed
 
