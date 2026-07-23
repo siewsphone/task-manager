@@ -35,7 +35,8 @@ export function TaskProvider({ children }) {
   }, [state.tasks]);
 
   const filteredTasks = state.tasks.filter((task) =>
-    state.filter === "all" ? true : task.status === state.filter
+    (state.statusFilter === "all" ? true : task.status === state.statusFilter) &&
+    (state.priorityFilter === "all" ? true : task.priority === state.priorityFilter)
   );
 
   const addTask = (task) => dispatch({ type: "ADD_TASK", payload: task });
@@ -44,19 +45,24 @@ export function TaskProvider({ children }) {
   const reorderTasks = (draggedId, targetId) =>
     dispatch({ type: "REORDER_TASKS", payload: { draggedId, targetId } });
   const deleteTask = (id) => dispatch({ type: "DELETE_TASK", payload: id });
-  const setFilter = (filter) => dispatch({ type: "SET_FILTER", payload: filter });
+  const setStatusFilter = (statusFilter) =>
+    dispatch({ type: "SET_STATUS_FILTER", payload: statusFilter });
+  const setPriorityFilter = (priorityFilter) =>
+    dispatch({ type: "SET_PRIORITY_FILTER", payload: priorityFilter });
 
   return (
     <TaskContext.Provider
       value={{
         tasks: state.tasks,
-        filter: state.filter,
+        statusFilter: state.statusFilter,
+        priorityFilter: state.priorityFilter,
         filteredTasks,
         addTask,
         updateTask,
         reorderTasks,
         deleteTask,
-        setFilter,
+        setStatusFilter,
+        setPriorityFilter,
       }}
     >
       {children}

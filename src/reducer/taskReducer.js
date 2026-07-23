@@ -9,7 +9,8 @@ const initialTasks = [
 
 export const initialState = {
   tasks: initialTasks,
-  filter: "all",
+  statusFilter: "all",
+  priorityFilter: "all",
 };
 
 export function taskReducer(state, action) {
@@ -72,10 +73,16 @@ export function taskReducer(state, action) {
         tasks: state.tasks.filter((t) => t.id !== action.payload),
       };
 
-    case "SET_FILTER":
+    case "SET_STATUS_FILTER":
       return {
         ...state,
-        filter: action.payload,
+        statusFilter: action.payload,
+      };
+
+    case "SET_PRIORITY_FILTER":
+      return {
+        ...state,
+        priorityFilter: action.payload,
       };
 
     default:

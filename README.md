@@ -29,6 +29,8 @@ A React + Vite task manager app with:
 - Persist tasks in localStorage so they survive a page reload (use a lazy useState initialiser or
 useEffect in TaskContext)
 - Add an UPDATE_TASK action and an inline edit form on the detail page
+- Add drag-and-drop reordering of tasks in the list using only browser drag events (no library)
+- Add a priority filter on top of the status filter, so both can be active at the same time
 
 ## Tools used
 
